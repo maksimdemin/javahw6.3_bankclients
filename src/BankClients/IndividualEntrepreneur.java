@@ -15,14 +15,18 @@ public class IndividualEntrepreneur extends Clients {
         double bankHalfPercent = amount * 0.005;
         if (amount < 1000) {
             changeBalance(getBalance() + amount - bankOnePercent);
-            System.out.println("Credited amount " + amount +
-                    "\nBank percent = " + bankOnePercent + " Current balance = " + getBalance());
+//            System.out.println("Credited amount " + amount +
+//                    "\nBank percent = " + bankOnePercent + " Current balance = " + getBalance());
         }
         else if (amount >= 1000) {
             changeBalance(getBalance() + amount - bankHalfPercent);
-            System.out.println("Credited amount " + amount +
-                    "\nBank percent = " + bankHalfPercent + " Current balance = " + getBalance());
+//            System.out.println("Credited amount " + amount +
+//                    "\nBank percent = " + bankHalfPercent + " Current balance = " + getBalance());
         }
+
+        System.out.println(amount < 1000 ? "Entered amount " + amount +
+                "\nBank percent 1% = " + bankOnePercent + " Current balance = " + getBalance() : "Entered amount " + amount +
+                "\nBank percent 0.5% = " + bankHalfPercent + " Current balance = " + getBalance());
     }
 
     @Override
