@@ -11,8 +11,8 @@ public class Individual extends Clients{
 
     @Override
     public void setCashIn(double amount) {
-        changeBalance(getBalance() + amount);
-        System.out.println("Credited amount " + amount + " Current balance = " + getBalance());
+        super.changeBalance(getBalance() + amount);
+        System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
     }
 
     @Override
@@ -21,7 +21,7 @@ public class Individual extends Clients{
             System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
         }
         else {
-            changeBalance(getBalance() - amount);
+            super.changeBalance(getBalance() - amount);
             System.out.println("The amount " + amount + "  withdrawn from the account. Current balance = " + getBalance());
         }
     }

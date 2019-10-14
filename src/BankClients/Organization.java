@@ -11,8 +11,8 @@ public class Organization extends Clients {
 
     @Override
     public void setCashIn(double amount) {
-        changeBalance(getBalance() + amount);
-        System.out.println("Credited amount " + amount + " Current balance = " + getBalance());
+        super.changeBalance(getBalance() + amount);
+        System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Organization extends Clients {
             System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
         }
         else {
-            changeBalance(getBalance() - amount - bankPercent);
+            super.changeBalance(getBalance() - amount - bankPercent);
             System.out.println("The amount " + amount + "  withdrawn from the account. " +
                     "\nBank percent = " + bankPercent + " Current balance = " + getBalance());
         }

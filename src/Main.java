@@ -9,12 +9,12 @@ public class Main {
 
         System.out.println("Individual account.");
         Clients client1 = new Individual(0);
-        System.out.println(client1.getBalance());
+        System.out.println("Current balance = " + client1.getBalance());
         client1.setCashIn(1000);
         System.out.println("Current balance = " + client1.getBalance());
         client1.setCashIn(2500);
         System.out.println("Current balance = " + client1.getBalance());
-        client1.setCashOut(10000);
+        client1.setCashOut(100);
         System.out.println("Current balance = " + client1.getBalance());
 
         System.out.println("\nOrganization account.");
@@ -30,12 +30,5 @@ public class Main {
         System.out.println("Current balance = " + client3.getBalance());
         client3.setCashIn(500);
         System.out.println("Current balance = " + client3.getBalance());
-
-
-
-
-
-
-
     }
 }
