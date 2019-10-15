@@ -10,18 +10,18 @@ public class Individual extends Clients{
 
 
     @Override
-    public void setCashIn(double amount) {
-        super.changeBalance(getBalance() + amount);
+    public void cashToScore(double amount) {
+        setCashIn(amount);
         System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
     }
 
     @Override
-    public void setCashOut(double amount) {
+    public void cashFromScore(double amount) {
         if (getBalance() < amount) {
             System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
         }
         else {
-            super.changeBalance(getBalance() - amount);
+            setCashOut(amount);
             System.out.println("The amount " + amount + "  withdrawn from the account. Current balance = " + getBalance());
         }
     }

@@ -10,21 +10,21 @@ public class Organization extends Clients {
 
 
     @Override
-    public void setCashIn(double amount) {
-        super.changeBalance(getBalance() + amount);
+    public void cashToScore(double amount) {
+        setCashIn(amount);
         System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
     }
 
     @Override
-    public void setCashOut(double amount) {
-        double bankPercent = amount * 0.01;
+    public void cashFromScore(double amount) {
+        double bankPercent = amount * 0.01; // комиссия 1%
+        double bankPercentSimple = 1.01; // (balance - amount - amount * 0.01) = balance - amount * 1.01
         if (getBalance() < amount) {
             System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
         }
         else {
-            super.changeBalance(getBalance() - amount - bankPercent);
-            System.out.println("The amount " + amount + "  withdrawn from the account. " +
-                    "\nBank percent = " + bankPercent + " Current balance = " + getBalance());
+            setCashOut(amount * bankPercentSimple);
+            System.out.println("The amount " + amount + "  withdrawn from the account. Bank percent = " + bankPercent + " Current balance = " + getBalance());
         }
 
     }
