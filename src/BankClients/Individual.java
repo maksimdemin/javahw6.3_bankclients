@@ -11,19 +11,38 @@ public class Individual extends Clients{
 
     @Override
     public void cashToScore(double amount) {
+        isCashIn = true;
         super.setCashIn(amount);
-        System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
+        printInfo(amount);
+        isCashIn = false;
     }
 
     @Override
     public void cashFromScore(double amount) {
         if (getBalance() < amount) {
-            System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
+            isCashOut = true;
+            printInfo(amount);
+            isCashOut = false;
         }
         else {
+            isCashOut = true;
+            printInfo(amount);
             super.setCashOut(amount);
-            System.out.println("The amount " + amount + "  withdrawn from the account. Current balance = " + getBalance());
+            isCashOut = false;
         }
+    }
+
+    @Override
+    public void printInfo(double amount) {
+        if (isCashIn) {
+            System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
+        }
+        if (isCashOut) {
+            System.out.println(getBalance() < amount ? "Your current balance = " + getBalance() + ". You cannot withdraw " + amount : "" +
+                    "The amount " + amount + "  withdrawn from the account. Current balance = " + (getBalance() - amount));
+
+        }
+
     }
 
 }

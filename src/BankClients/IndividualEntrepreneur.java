@@ -8,32 +8,52 @@ public class IndividualEntrepreneur extends Clients {
     }
 
 
-
     @Override
     public void cashToScore(double amount) {
-        double bankOnePercent = amount * 0.01; // комиссия 1%
-        double bankOnePercentSimple = 0.99; // (balance + amount - amount * 0.01) = balance + amount * 0.99
-        double bankHalfPercent = amount * 0.005; // комиссия 0.5%
-        double bankHalfPercentSimple = 0.995; // (balance + amount - amount * 0.005) = balance + amount * 0.995
         if (amount < 1000) {
-            super.setCashIn(amount * bankOnePercentSimple);
+            isCashIn = true;
+            super.setCashIn(amount * BANK_ONE_PERCENT_SIMPLE);
+            printInfo(amount);
+            isCashIn = false;
         }
         else if (amount >= 1000) {
-            super.setCashIn(amount * bankHalfPercentSimple);
+            isCashIn = true;
+            super.setCashIn(amount * BANK_HALF_PERCENT_SIMPLE);
+            printInfo(amount);
+            isCashIn = false;
         }
-        System.out.println(amount < 1000 ? "Entered amount " + amount +
-                "\nBank percent 1% = " + bankOnePercent + " Current balance = " + getBalance() : "Entered amount " + amount +
-                "\nBank percent 0.5% = " + bankHalfPercent + " Current balance = " + getBalance());
     }
+
 
     @Override
     public void cashFromScore(double amount) {
         if (getBalance() < amount) {
-            System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
+            isCashOut = true;
+            printInfo(amount);
+            isCashOut = false;
         }
         else {
+            isCashOut = true;
+            printInfo(amount);
             super.setCashOut(amount);
-            System.out.println("The amount " + amount + "  withdrawn from the account. Current balance = " + getBalance());
+            isCashOut = false;
+        }
+    }
+
+
+    @Override
+    public void printInfo(double amount) {
+        if (isCashIn) {
+            double bankOnePercent = amount * 0.01; // комиссия 1%
+            double bankHalfPercent = amount * 0.005; // комиссия 0.5%
+            System.out.println(amount < 1000 ? "Entered amount " + amount +
+                    "\nBank percent 1% = " + bankOnePercent + " Current balance = " + getBalance() : "Entered amount " + amount +
+                    "\nBank percent 0.5% = " + bankHalfPercent + " Current balance = " + getBalance());
+        }
+        if (isCashOut) {
+            System.out.println(getBalance() < amount ? "Your current balance = " + getBalance() + ". You cannot withdraw " + amount : "" +
+                    "The amount " + amount + "  withdrawn from the account. Current balance = " + (getBalance() - amount));
+
         }
     }
 }

@@ -2,6 +2,12 @@ package BankClients;
 
 public abstract class Clients {
 
+    final double BANK_PERCENT_SIMPLE = 1.01; // (balance - amount - amount * 0.01) = balance - amount * 1.01
+    final double BANK_ONE_PERCENT_SIMPLE = 0.99; // (balance + amount - amount * 0.01) = balance + amount * 0.99
+    final double BANK_HALF_PERCENT_SIMPLE = 0.995; // (balance + amount - amount * 0.005) = balance + amount * 0.995
+    boolean isCashIn = false; // перемeнная для метода printInfo
+    boolean isCashOut = false; // перемeнная для метода printInfo
+
     private double paymentScore;
 
     Clients(double paymentScore) {
@@ -28,6 +34,6 @@ public abstract class Clients {
         return paymentScore;
     }
 
-//    public abstract void printInfo(double cash);
+    abstract void printInfo(double cash);
 
 }
