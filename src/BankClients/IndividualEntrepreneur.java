@@ -16,10 +16,10 @@ public class IndividualEntrepreneur extends Clients {
         double bankHalfPercent = amount * 0.005; // комиссия 0.5%
         double bankHalfPercentSimple = 0.995; // (balance + amount - amount * 0.005) = balance + amount * 0.995
         if (amount < 1000) {
-            setCashIn(amount * bankOnePercentSimple);
+            super.setCashIn(amount * bankOnePercentSimple);
         }
         else if (amount >= 1000) {
-            setCashIn(amount * bankHalfPercentSimple);
+            super.setCashIn(amount * bankHalfPercentSimple);
         }
         System.out.println(amount < 1000 ? "Entered amount " + amount +
                 "\nBank percent 1% = " + bankOnePercent + " Current balance = " + getBalance() : "Entered amount " + amount +
@@ -32,7 +32,7 @@ public class IndividualEntrepreneur extends Clients {
             System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
         }
         else {
-            setCashOut(amount);
+            super.setCashOut(amount);
             System.out.println("The amount " + amount + "  withdrawn from the account. Current balance = " + getBalance());
         }
     }

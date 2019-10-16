@@ -24,6 +24,7 @@ public class Main {
 
         System.out.println("\nIndividualEntrepreneur account.");
         Clients client3 = new IndividualEntrepreneur(0);
+        System.out.println("Current balance = " + client3.getBalance());
         client3.cashToScore(100000);
         System.out.println("Current balance = " + client3.getBalance());
         client3.cashToScore(500);

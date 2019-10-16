@@ -11,7 +11,7 @@ public class Organization extends Clients {
 
     @Override
     public void cashToScore(double amount) {
-        setCashIn(amount);
+        super.setCashIn(amount);
         System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
     }
 
@@ -23,7 +23,7 @@ public class Organization extends Clients {
             System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
         }
         else {
-            setCashOut(amount * bankPercentSimple);
+            super.setCashOut(amount * bankPercentSimple);
             System.out.println("The amount " + amount + "  withdrawn from the account. Bank percent = " + bankPercent + " Current balance = " + getBalance());
         }
 

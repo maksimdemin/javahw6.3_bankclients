@@ -11,7 +11,7 @@ public class Individual extends Clients{
 
     @Override
     public void cashToScore(double amount) {
-        setCashIn(amount);
+        super.setCashIn(amount);
         System.out.println("Entered amount " + amount + " Current balance = " + getBalance());
     }
 
@@ -21,7 +21,7 @@ public class Individual extends Clients{
             System.out.println("Your current balance = " + getBalance() + ". You cannot withdraw " + amount);
         }
         else {
-            setCashOut(amount);
+            super.setCashOut(amount);
             System.out.println("The amount " + amount + "  withdrawn from the account. Current balance = " + getBalance());
         }
     }
